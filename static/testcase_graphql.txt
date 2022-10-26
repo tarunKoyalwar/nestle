@@ -1,0 +1,70 @@
+query getNotes(
+  $limit: Int
+  $offset: Int
+  $user_ids: [String!]!
+  $note_type: [String!]!
+  $exclude_user_ids: [String!]
+) {
+  notes(
+    limit: $limit
+    offset: $offset
+    user_ids: $user_ids
+    note_type: $note_type
+    exclude_user_ids: $exclude_user_ids
+  ) {
+    data {
+      id
+      attributes {
+        body
+        note_type
+        published_at
+        resource_id
+        resource_type
+        clients {
+          user_canonical_id
+          full_name
+        }
+        author {
+          user_canonical_id
+          full_name
+        }
+        metadata
+      }
+    }
+    metaverse {
+      total
+      offset
+      limit
+      sort_by
+      sort_order
+    }
+  }
+}nested
+
+mutation publishNote(
+  $body: String!
+  $user_ids: [String!]!
+  $note_type: String!
+) {
+  publishNote(body: $body, user_ids: $user_ids, note_type: $note_type) {
+    data {
+      id
+      attributes {
+        body
+        note_type
+        published_at
+        resource_id
+        resource_type
+        clients {
+          user_canonical_id
+          full_name
+        }
+        author {
+          user_canonical_id
+          full_name
+        }
+        metadata
+      }
+    }
+  }
+}nested
