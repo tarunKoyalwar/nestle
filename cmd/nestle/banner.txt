@@ -1,0 +1,11 @@
+     __             _    _       
+  /\ \ \  ___  ___ | |_ | |  ___ 
+ /  \/ / / _ \/ __|| __|| | / _ \
+/ /\  / |  __/\__ \| |_ | ||  __/
+\_\ \/   \___||___/ \__||_| \___|
+                                
+                        -tarunKoyalwar
+
+A Wrapper around regexp.Regexp that supports Nested Symbols/brackets
+Use syntax `[(:nested:)]` for nested groups
+
