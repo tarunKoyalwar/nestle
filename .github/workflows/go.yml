@@ -1,0 +1,34 @@
+
+name: Go Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Test Builds
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest,macOS-latest]
+
+    steps:
+      - name: Setup Golang
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+
+      - name: Build Nestle
+        run: go build .
+        working-directory: cmd/nestle/
+
+      - name: Unit Tests
+        run: go test ./...
